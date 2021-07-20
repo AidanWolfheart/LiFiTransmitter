@@ -1,1 +1,13 @@
-# LiFiTransmitter
+# Li-Fi Transmitter
+
+## Made by Moaz Hafez and Kiril Chomaniuk
+
+The application uses visible light to transmit data between two nodes. This data can be represented in a form of six features: 1. send text from PC keyboard through transmitter to be shown on the receiver's screen; 2. transfer a file in any format from PC through transmitter to receiver, capturing it to be decoded into its original form on another PC; 3-6. commands to control peripherals on the receiver side. For the purpose of this project, receiver peripherals are represented as LEDs of various colours.
+
+The concept behind the communication is that any data to be transmitted will be represented as 0 and 1. These digital values will be converted to analog form of ON(1) and OFF(0). The transmitter sends data character by character, attaching a start word in the beginning of each character to notify the receiver that it is about to see data and not variation of ambient light. For simplicity, the start word consists of 0101. The default state of the transmitter LED is ON.
+
+The receiver processes variance of light to determine what sequence of bits it got delivered, later converting it into an actual ASCII representation of a character. I.e. to send 'A', we convert its ASCII value into binary, then process it on receiving end, processing it back to ASCII, resulting in 'A'. With properly set baud rate, it is possible to connect the receiver to a PC through a UART port, sending a stream of characters as a file or single characters to mirror the keyboard from the transmitter. 
+
+1. To send text, we have to select the 'PC Keyboard' button on the transmitter screen, connect the transmitter to one of the PC's USB ports, open a serial communication port (USB to UART) using the RealTerm destop application, set the baud-rate to 115200 bps, allowing to start sending text from the PC keyboard, which will appear on the receiver screen.
+2. To send file, first select "File Transfer" on the transmitter screen, open two serial comuincation ports: one from PC to transmitter with baud rate of 115200 bps and another from receiver to second PC with baud rate of 9600 bps. Run Batch jobs on both ends. The former allows the file to be transmitted, transforms it into hex values using the Swiss Knife shell command tool and starts sending each value with a delay of 5 ms, while the latter will start capturing the characters from the receiver board and will then run the Swiss Knife to transform the HEX characters into a file.
+3. To toggle peripherals, press on the desired peripheral from the transmitter screen, which then sends a non-keyboard ASCII code assigned to the designated peripheral and accordingly it will the peripheral, outputting the state on the receiver LCD.
