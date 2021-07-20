@@ -1,6 +1,6 @@
 Embedded Systems: Li-Fi Transmitter
 
-Nade by Moaz Hafez and Kiril Chomaniuk
+Made by Moaz Hafez and Kiril Chomaniuk
 
 The application uses visible light to transmit data between two nodes. This data can be represented in a form of six features: 1. send text from PC keyboard through transmitter to be shown on the receiver's screen; 2. transfer a file in any format from PC through transmitter to receiver, capturing it to be decoded into its original form on another PC; 3-6. commands to control peripherals on the receiver side. For the purpose of this project, receiver peripherals are represented as LEDs of various colours.
 
